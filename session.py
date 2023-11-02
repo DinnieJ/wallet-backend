@@ -4,12 +4,15 @@ from fastapi_sessions.session_verifier import SessionVerifier
 from pydantic import BaseModel
 from fastapi_sessions.frontends.implementations import SessionCookie, CookieParameters
 from uuid import UUID
+from model import User
 
 
 class SessionData(BaseModel):
     access_token: str
     refresh_token: str
-
+    email: str
+    first_time_login: bool
+    tmp_secret: str | None
 
 cookie_params = CookieParameters()
 
